@@ -1,0 +1,17 @@
+<%= error_messages_for 'company' %>
+
+<div class="box tabular">
+  <%= form_with(model: company, local: true) do |form| %>
+    <p>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </p>
+    <p>
+      <%= form.label :subdomain %>
+      <%= form.text_field :subdomain %>
+    </p>
+    <p>
+      <%= form.submit l(:button_save) %>
+    </p>
+  <% end %>
+</div>

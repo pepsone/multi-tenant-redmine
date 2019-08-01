@@ -436,6 +436,9 @@ cs:
   project_module_calendar: Kalendář
   project_module_gantt: Gantt
 
+  label_company: Společnost
+  label_company_plural: Společnosti
+
   label_user: Uživatel
   label_user_plural: Uživatelé
   label_user_new: Nový uživatel

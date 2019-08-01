@@ -17,7 +17,27 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+class SubdomainConstraint
+  def self.matches?(request)
+    subdomains = Company.pluck :subdomain
+    request.subdomain.present? && subdomains.include?(request.subdomain)
+  end
+end
+
+class AdminConstraint
+  def self.matches?(request)
+    subdomains = %w{ admin }
+    request.subdomain.present? && subdomains.include?(request.subdomain)
+  end
+end
+
 Rails.application.routes.draw do
+  # resources :companies
+  constraints AdminConstraint do
+    resources :companies
+    root to: 'companies#index'
+  end
+
   root :to => 'welcome#index', :as => 'home'
 
   match 'login', :to => 'account#login', :as => 'signin', :via => [:get, :post]

@@ -15,8 +15,10 @@ gem "nokogiri", "~> 1.10.0"
 gem "i18n", "~> 1.6.0"
 gem "rbpdf", "~> 1.19.6"
 
+gem 'apartment'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :x64_mingw, :mswin]
+# gem 'tzinfo-data', platforms: [:mingw, :x64_mingw, :mswin]
 
 # Optional gem for LDAP authentication
 group :ldap do

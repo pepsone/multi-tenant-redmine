@@ -3,3 +3,29 @@
 Redmine is a flexible project management web application written using Ruby on Rails framework.
 
 More details can be found in the doc directory or on the official website http://www.redmine.org
+
+POC Redmine with multi-tenancy database
+Extended by Apartment gem: https://github.com/influitive/apartment for database multi-tenancy use
+
+Switching Tenants per request based on subdomain
+
+Tenant model Company
+
+Localhost development instance instalation and run
+ruby version 2.6.x
+db PostgreSQL - settings in database.yml
+tenants are postgresql schemas
+
+bundle exec rake generate_secret_token
+rake db:create
+rake db:migrate
+REDMINE_LANG=cs bundle exec rake redmine:load_default_data
+default Admin: admin/admin - password must be changed after first login
+
+Address for localhost use:
+http://lvh.me:3000/
+http://www.lvh.me:3000/
+http://admin.lvh.me:3000/ - companies (tenants) management
+Tenants:
+http://subdomain.lvh.me:3000/
+subdomain as attribute of Company model

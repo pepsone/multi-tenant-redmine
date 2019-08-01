@@ -100,6 +100,7 @@ class User < Principal
   attr_accessor :password, :password_confirmation, :generate_password
   attr_accessor :last_before_login_on
   attr_accessor :remote_ip
+  attr_accessor :disable_security_notification
 
   LOGIN_LENGTH_LIMIT = 60
   MAIL_LENGTH_LIMIT = 60
@@ -901,6 +902,8 @@ class User < Principal
 
   # Send a security notification to all admins if the user has gained/lost admin privileges
   def deliver_security_notification
+    return if disable_security_notification
+
     options = {
       field: :field_admin,
       value: login,
